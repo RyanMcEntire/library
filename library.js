@@ -10,3 +10,13 @@ function Book(title, author, pages, read) {
   };
 }
 
+function addBookToLibrary() {
+  let newBook = new Book(
+    prompt("Book Title"),
+    prompt("Book Author"),
+    prompt("Book Pages"),
+    prompt("Read?")
+  );
+  myLibrary.push(newBook)
+}
+addBookToLibrary()
