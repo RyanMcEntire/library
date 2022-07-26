@@ -38,3 +38,17 @@ myLibrary.push(everydayThings, asILayDying);
 // addBookToLibrary()
 
 const bookShelf = document.querySelector("#shelf");
+
+function createCard(Book) {
+  const bookCard = document.createElement("div");
+  bookCard.classList.add("bookCard");
+  bookCard.setAttribute("id", Book.title);
+  bookShelf.appendChild(bookCard);
+  const cardTitle = document.createElement("div");
+  cardTitle.classList.add("cardTitle")
+  cardTitle.textContent = Book.title; 
+}
+
+function addCardToShelf() {
+  
+}
