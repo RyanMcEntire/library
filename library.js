@@ -33,36 +33,39 @@ function addBookToLibrary() {
     prompt("Read?")
   );
   myLibrary.push(newBook);
+  addCardToShelf();
 }
 
 function createCard(book) {
   const bookCard = document.createElement("div");
   bookCard.classList.add("bookCard");
   bookShelf.appendChild(bookCard);
-  const cardTitle = document.createElement("div");
-  cardTitle.classList.add("cardTitle");
-  cardTitle.textContent = book.title;
+  const title = document.createElement("div");
+  title.classList.add("title");
+  title.textContent = book.title;
   console.log(Book.title);
-  bookCard.appendChild(cardTitle);
-  const cardAuthor = document.createElement("div");
-  cardAuthor.classList.add("cardTitle");
-  cardAuthor.textContent = book.author;
+  bookCard.appendChild(title);
+  const author = document.createElement("div");
+  author.classList.add("author");
+  author.textContent = book.author;
   console.log(Book.title);
-  bookCard.appendChild(cardAuthor);
-  const cardPages = document.createElement("div");
-  cardPages.classList.add("cardTitle");
-  cardPages.textContent = book.pages;
+  bookCard.appendChild(author);
+  const pages = document.createElement("div");
+  pages.classList.add("pages");
+  pages.textContent = book.pages;
   console.log(Book.title);
-  bookCard.appendChild(cardPages);
-  const cardRead = document.createElement("div");
-  cardRead.classList.add("cardTitle");
+  bookCard.appendChild(pages);
+  const read = document.createElement("div");
+  read.classList.add("read");
   if (book.read) {
-    cardRead.textContent = "Read";
-    bookCard.appendChild(cardRead);
-  } else cardRead.textContent = "Unread";
-  bookCard.appendChild(cardRead);
+    read.textContent = "Read";
+    bookCard.appendChild(read);
+  } else if (!book.read) {
+    read.textContent = "Unread";
+  bookCard.appendChild(read);
+} else read.textContent = book.read;
+  bookCard.appendChild(read);
 }
-
 function addCardToShelf() {
   for (let i = 0; i < myLibrary.length; i++) {
     createCard(myLibrary[i]);
@@ -71,5 +74,7 @@ function addCardToShelf() {
 }
 
 myLibrary.push(everydayThings, asILayDying);
-addCardToShelf();
-//addBookToLibrary();
+
+
+// addBookToLibrary();
+// addCardToShelf();

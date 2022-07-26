@@ -4,6 +4,9 @@
   width: 150px;
   background-color: rgb(255, 176, 176);
 }
+.bookCard > div {
+  width: 75px;
+}
 .cardTitle {
   color: rgb(80, 80, 212);
   background-color: #fff;
