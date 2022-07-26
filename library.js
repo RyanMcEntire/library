@@ -1,3 +1,17 @@
+const everydayThings = new Book(
+  "The Design of Everyday Things",
+  "Don Norman",
+  "368",
+  true
+);
+
+const asILayDying = new Book(
+  "As I Lay Dying",
+  "William Faulkner",
+  "267",
+  false
+);
+
 let myLibrary = [];
 
 function Book(title, author, pages, read) {
@@ -17,6 +31,10 @@ function addBookToLibrary() {
     prompt("Book Pages"),
     prompt("Read?")
   );
-  myLibrary.push(newBook)
+  myLibrary.push(newBook);
 }
-addBookToLibrary()
+
+myLibrary.push(everydayThings, asILayDying);
+// addBookToLibrary()
+
+const bookShelf = document.querySelector("#shelf");
