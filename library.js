@@ -62,8 +62,8 @@ function createCard(book) {
     bookCard.appendChild(read);
   } else if (!book.read) {
     read.textContent = "Unread";
-  bookCard.appendChild(read);
-} else read.textContent = book.read;
+    bookCard.appendChild(read);
+  } else read.textContent = book.read;
   bookCard.appendChild(read);
 }
 function addCardToShelf() {
@@ -74,7 +74,6 @@ function addCardToShelf() {
 }
 
 myLibrary.push(everydayThings, asILayDying);
-
 
 // addBookToLibrary();
 // addCardToShelf();

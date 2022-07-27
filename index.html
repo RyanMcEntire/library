@@ -1,16 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>A Little Library</title>
-  <link rel="stylesheet" href="styles.css">
-  <script defer src="library.js"></script>
-</head>
-<body>
-  <div id="shelf">
-    
-  </div>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>A Little Library</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script defer src="library.js"></script>
+  </head>
+  <body>
+    <div id="shelf">
+      <label for="title">Title</label>
+      <input id="title" type="text" />
+      <label for="author">Author</label>
+      <input id="author" type="text" />
+      <label for="pages">Pages</label>
+      <input id="pages" type="text" />
+      <input type="checkbox" id="readBook">
+      <label for="readBook">Have you read it?</label>
+      <button>Add to library</button>
+    </div>
+  </body>
 </html>
