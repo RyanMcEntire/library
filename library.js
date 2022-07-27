@@ -42,7 +42,7 @@ function addBookToLibrary() {
   // clear fields on submit
   title.value = "";
   author.value = "";
-  pages.value = ""
+  pages.value = "";
   readBook.checked = false;
 }
 
@@ -85,7 +85,7 @@ function addCardToShelf() {
 } */
 function addCardToShelf() {
   createCard(myLibrary[myLibrary.length - 1]);
-    console.log(myLibrary[myLibrary.length - 1]);
+  console.log(myLibrary[myLibrary.length - 1]);
 }
 
 myLibrary.push(everydayThings, asILayDying);
