@@ -1,3 +1,5 @@
+// default objects for testing
+/* 
 const everydayThings = new Book(
   "The Design of Everyday Things",
   "Don Norman",
@@ -10,7 +12,7 @@ const asILayDying = new Book(
   "William Faulkner",
   "267",
   false
-);
+); */
 
 let myLibrary = [];
 const bookShelf = document.querySelector("#shelf");
@@ -74,14 +76,19 @@ function createCard(book) {
   } else read.textContent = book.read;
   bookCard.appendChild(read);
 }
+/* 
 function addCardToShelf() {
   for (let i = 0; i < myLibrary.length; i++) {
     createCard(myLibrary[i]);
     console.log(myLibrary[i]);
   }
+} */
+function addCardToShelf() {
+  createCard(myLibrary[myLibrary.length - 1]);
+    console.log(myLibrary[myLibrary.length - 1]);
 }
 
 myLibrary.push(everydayThings, asILayDying);
 
 // addBookToLibrary();
-addCardToShelf();
+// addCardToShelf();
