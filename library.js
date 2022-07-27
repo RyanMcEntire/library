@@ -22,6 +22,14 @@ const author = document.getElementById("author");
 const pages = document.getElementById("pages");
 const read = document.getElementById("readBook");
 const addButton = document.getElementById("addToLibrary");
+const newBook = document.getElementById("newBook");
+
+addButton.addEventListener("click", addBookToLibrary);
+newBook.addEventListener("click", centerForm);
+
+function centerForm() {
+  document.getElementById("bookForm").className = "centerForm";
+}
 
 function Book(title, author, pages, read) {
   this.title = title;
@@ -33,12 +41,11 @@ function Book(title, author, pages, read) {
   };
 }
 
-addButton.addEventListener("click", addBookToLibrary);
-
 function addBookToLibrary() {
   let newBook = new Book(title.value, author.value, pages.value, read.checked);
   myLibrary.push(newBook);
   addCardToShelf();
+  document.getElementById("bookForm").className = "hideForm";
   // clear fields on submit
   title.value = "";
   author.value = "";
@@ -76,13 +83,7 @@ function createCard(book) {
   } else read.textContent = book.read;
   bookCard.appendChild(read);
 }
-/* 
-function addCardToShelf() {
-  for (let i = 0; i < myLibrary.length; i++) {
-    createCard(myLibrary[i]);
-    console.log(myLibrary[i]);
-  }
-} */
+
 function addCardToShelf() {
   createCard(myLibrary[myLibrary.length - 1]);
   console.log(myLibrary[myLibrary.length - 1]);
