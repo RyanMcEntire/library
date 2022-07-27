@@ -10,15 +10,18 @@
   </head>
   <body>
     <div id="shelf">
+      <div><button id="addBook">Add a Book</button></div>
+    </div>
+    <div id="bookForm">
       <label for="title">Title</label>
-      <input id="title" type="text" />
+      <input id="title" type="text" required name="title" />
       <label for="author">Author</label>
-      <input id="author" type="text" />
+      <input id="author" type="text" name="author" />
       <label for="pages">Pages</label>
-      <input id="pages" type="text" />
-      <input type="checkbox" id="readBook">
+      <input id="pages" type="text" name="pages" />
+      <input type="checkbox" id="readBook" name="readBook" />
       <label for="readBook">Have you read it?</label>
-      <button>Add to library</button>
+      <button id="addToLibrary">Add to library</button>
     </div>
   </body>
 </html>

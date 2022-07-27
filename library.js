@@ -14,6 +14,12 @@ const asILayDying = new Book(
 
 let myLibrary = [];
 const bookShelf = document.querySelector("#shelf");
+const bookForm = document.querySelector("#bookForm");
+const title = document.getElementById("title");
+const author = document.getElementById("author");
+const pages = document.getElementById("pages");
+const read = document.getElementById("readBook");
+const addButton = document.getElementById("addToLibrary");
 
 function Book(title, author, pages, read) {
   this.title = title;
@@ -24,7 +30,7 @@ function Book(title, author, pages, read) {
     return `${title} by ${author}, ${pages} pages, ${read}.`;
   };
 }
-
+/* 
 function addBookToLibrary() {
   let newBook = new Book(
     prompt("Book Title"),
@@ -33,6 +39,14 @@ function addBookToLibrary() {
     prompt("Read?")
   );
   myLibrary.push(newBook);
+  addCardToShelf();
+} */
+
+addButton.addEventListener("click", addBookToLibrary)
+
+function addBookToLibrary() {
+  let newBook = new Book(title.value, author.value, pages.value, read.checked);
+  myLibrary.push(newBook)
   addCardToShelf();
 }
 
