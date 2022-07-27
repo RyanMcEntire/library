@@ -30,24 +30,18 @@ function Book(title, author, pages, read) {
     return `${title} by ${author}, ${pages} pages, ${read}.`;
   };
 }
-/* 
-function addBookToLibrary() {
-  let newBook = new Book(
-    prompt("Book Title"),
-    prompt("Book Author"),
-    prompt("Book Pages"),
-    prompt("Read?")
-  );
-  myLibrary.push(newBook);
-  addCardToShelf();
-} */
 
-addButton.addEventListener("click", addBookToLibrary)
+addButton.addEventListener("click", addBookToLibrary);
 
 function addBookToLibrary() {
   let newBook = new Book(title.value, author.value, pages.value, read.checked);
-  myLibrary.push(newBook)
+  myLibrary.push(newBook);
   addCardToShelf();
+  // clear fields on submit
+  title.value = "";
+  author.value = "";
+  pages.value = ""
+  readBook.checked = false;
 }
 
 function createCard(book) {
@@ -90,4 +84,4 @@ function addCardToShelf() {
 myLibrary.push(everydayThings, asILayDying);
 
 // addBookToLibrary();
-// addCardToShelf();
+addCardToShelf();
