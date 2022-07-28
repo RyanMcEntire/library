@@ -1,5 +1,5 @@
 // default objects for testing
-/* 
+
 const everydayThings = new Book(
   "The Design of Everyday Things",
   "Don Norman",
@@ -12,10 +12,10 @@ const asILayDying = new Book(
   "William Faulkner",
   "267",
   false
-); */
+);
 
 let myLibrary = [];
-const bookShelf = document.querySelector("#shelf");
+const bookShelf = document.querySelector("#actualShelf");
 const bookForm = document.querySelector("#bookForm");
 const title = document.getElementById("title");
 const author = document.getElementById("author");
@@ -53,12 +53,18 @@ function addBookToLibrary() {
   readBook.checked = false;
 }
 
+function randomHsl() {
+  return "hsla(" + Math.random() * 360 + ", 60%, 90%, 1)";
+}
+
 function createCard(book) {
   const bookCard = document.createElement("div");
   bookCard.classList.add("bookCard");
+  bookCard.style.backgroundColor = randomHsl()
   bookShelf.appendChild(bookCard);
   const title = document.createElement("div");
   title.classList.add("title");
+  title.textContent = book.title;
   title.textContent = book.title;
   console.log(Book.title);
   bookCard.appendChild(title);
@@ -69,7 +75,7 @@ function createCard(book) {
   bookCard.appendChild(author);
   const pages = document.createElement("div");
   pages.classList.add("pages");
-  pages.textContent = book.pages;
+  pages.textContent = book.pages + " " + "pages";
   console.log(Book.title);
   bookCard.appendChild(pages);
   const read = document.createElement("div");
@@ -92,4 +98,4 @@ function addCardToShelf() {
 myLibrary.push(everydayThings, asILayDying);
 
 // addBookToLibrary();
-// addCardToShelf();
+addCardToShelf();
