@@ -54,7 +54,7 @@ function addBookToLibrary() {
 }
 
 function randomHsl() {
-  return "hsla(" + Math.random() * 360 + ", 60%, 90%, 1)";
+  return "hsla(" + Math.random() * 360 + ", 70%, 90%, 1)";
 }
 
 function createCard(book) {
