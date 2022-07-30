@@ -41,7 +41,7 @@ function Book(title, author, pages, read, index) {
   this.info = function () {
     return `${title} by ${author}, ${pages} pages, ${read}.`;
   };
-  this.index = index;
+  console.log(index)
 }
 
 function addBookToLibrary() {
@@ -50,8 +50,9 @@ function addBookToLibrary() {
     author.value,
     pages.value,
     read.checked,
-    index
+     
   );
+  console.log(this.index);
   myLibrary.push(newBook);
   addCardToShelf();
   document.getElementById("bookForm").className = "hideForm";
@@ -106,13 +107,13 @@ function addCardToShelf() {
 
 myLibrary.push(everydayThings, asILayDying);
 
-function deleteBook() {
+/* function deleteBook() {
   myLibrary.splice(myLibrary[index]);
 }
 
 const index = myLibrary.findIndex((object) => {
-  object.title == `${this.title}`;
-});
+  object.title === `${this.title}`;
+}); */
 
 // addBookToLibrary();
 addCardToShelf();
