@@ -88,7 +88,7 @@ function createCard(book) {
   bookCard.appendChild(author);
   const pages = document.createElement("div");
   pages.classList.add("pages");
-  pages.textContent = book.pages + " " + "pages";
+  if (book.pages !== "") pages.textContent = book.pages + " " + "pages";
   bookCard.appendChild(pages);
   const readBox = document.createElement("div");
   readBox.classList.add("readBox");
