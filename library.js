@@ -28,6 +28,16 @@ bookShelf.addEventListener("click", (e) => {
   }
 });
 
+bookShelf.addEventListener("change", (e) => {
+  if (e.target.classList.contains("read")) {
+    let bookToChange = e.target.value;
+    let indexToChange = myLibrary.findIndex((Book) => {
+      return Book.title === bookToChange;
+    });
+    myLibrary[indexToChange].read = "true";
+  }
+});
+
 function centerForm() {
   document.getElementById("bookForm").className = "centerForm";
 }
@@ -81,10 +91,15 @@ function createCard(book) {
   bookCard.appendChild(readBox);
   const read = document.createElement("input");
   read.setAttribute("type", "checkbox");
+  read.setAttribute("value", `${book.title}`);
   read.classList.add("read");
-  read.setAttribute("value", book.read)
+  if (book.read === true) {
+    read.setAttribute("checked", "checked");
+  } else if (book.read === false) {
+    read.removeAttribute("checked");
+  }
   readBox.appendChild(read);
-  
+
   const deleteButton = document.createElement("button");
   deleteButton.setAttribute("id", "deleteButton");
   deleteButton.classList.add("deleteButton");
