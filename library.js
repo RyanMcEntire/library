@@ -34,7 +34,12 @@ bookShelf.addEventListener("change", (e) => {
     let indexToChange = myLibrary.findIndex((Book) => {
       return Book.title === bookToChange;
     });
-    myLibrary[indexToChange].read = "true";
+    if (myLibrary[indexToChange].read === true) {
+      myLibrary[indexToChange].read = false;
+    }
+    if (myLibrary[indexToChange].read === false) {
+      myLibrary[indexToChange].read = true;
+    }
   }
 });
 
