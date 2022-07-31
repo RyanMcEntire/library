@@ -1,19 +1,3 @@
-// default objects for testing
-
-const everydayThings = new Book(
-  "The Design of Everyday Things",
-  "Don Norman",
-  "368",
-  true
-);
-
-const asILayDying = new Book(
-  "As I Lay Dying",
-  "William Faulkner",
-  "267",
-  false
-);
-
 let myLibrary = [];
 const bookShelf = document.querySelector("#actualShelf");
 const bookForm = document.querySelector("#bookForm");
@@ -23,17 +7,32 @@ const pages = document.getElementById("pages");
 const read = document.getElementById("readBook");
 const addButton = document.getElementById("addToLibrary");
 const newBook = document.getElementById("newBook");
-const deleteButton = document.getElementById("deleteButton");
 
 addButton.addEventListener("click", addBookToLibrary);
 newBook.addEventListener("click", centerForm);
-deleteButton.addEventListener("click", deleteBook);
+
+bookShelf.addEventListener("click", (e) => {
+  //To delete from array and DOM
+  if (e.target.classList.contains("deleteButton")) {
+    let bookToDelete = e.target.value;
+    const cardIDToDelete = e.target.id;
+    console.log(e.target.value);
+    let indexToDelete = myLibrary.findIndex((Book) => {
+      return Book.title === bookToDelete;
+    });
+    const cardForDeletion = document.getElementById(`${bookToDelete}1`);
+    console.log(`${cardIDToDelete}1`);
+    cardForDeletion.remove();
+
+    myLibrary.splice([indexToDelete], 1);
+  }
+});
 
 function centerForm() {
   document.getElementById("bookForm").className = "centerForm";
 }
 
-function Book(title, author, pages, read, index) {
+function Book(title, author, pages, read) {
   this.title = title;
   this.author = author;
   this.pages = pages;
@@ -41,20 +40,13 @@ function Book(title, author, pages, read, index) {
   this.info = function () {
     return `${title} by ${author}, ${pages} pages, ${read}.`;
   };
-  console.log(index)
 }
 
 function addBookToLibrary() {
-  let newBook = new Book(
-    title.value,
-    author.value,
-    pages.value,
-    read.checked,
-     
-  );
-  console.log(this.index);
+  let newBook = new Book(title.value, author.value, pages.value, read.checked);
   myLibrary.push(newBook);
   addCardToShelf();
+  console.log(myLibrary);
   document.getElementById("bookForm").className = "hideForm";
   // clear fields on submit
   title.value = "";
@@ -70,6 +62,7 @@ function randomHsl() {
 function createCard(book) {
   const bookCard = document.createElement("div");
   bookCard.classList.add("bookCard");
+  bookCard.setAttribute("id", `${book.title}1`);
   bookCard.style.backgroundColor = randomHsl();
   bookShelf.appendChild(bookCard);
   const title = document.createElement("div");
@@ -95,27 +88,15 @@ function createCard(book) {
   } else read.textContent = book.read;
   bookCard.appendChild(read);
   const deleteButton = document.createElement("button");
-  deleteButton.setAttribute("id", "deleteButton")
+  deleteButton.setAttribute("id", "deleteButton");
+  deleteButton.classList.add("deleteButton");
+  deleteButton.setAttribute("value", `${book.title}`);
   deleteButton.textContent = "delete";
   bookCard.appendChild(deleteButton);
 }
 
 function addCardToShelf() {
   createCard(myLibrary[myLibrary.length - 1]);
-  console.log(myLibrary[myLibrary.length - 1]);
 }
-
-myLibrary.push(everydayThings, asILayDying);
-
-/* function deleteBook() {
-  myLibrary.splice(myLibrary[index]);
-}
-
-const index = myLibrary.findIndex((object) => {
-  object.title === `${this.title}`;
-}); */
-
-// addBookToLibrary();
-addCardToShelf();
 
 console.log(myLibrary);
