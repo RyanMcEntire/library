@@ -42,7 +42,7 @@ body {
   display: flex;
   flex-wrap: wrap;
   gap: 1rem;
-  justify-content: space-around;
+  justify-content: center;
 }
 #bookForm {
   width: 25rem;
@@ -67,7 +67,7 @@ input {
   flex-direction: row;
 }
 #pages {
-  width: 2rem;
+  width: 3rem;
 }
 #addToLibrary,
 #newBook, 
@@ -115,4 +115,8 @@ button:hover {
 h1 {
   font-size: 4rem;
   margin: 0;
+}
+
+.error {
+  height: 1rem;
 }
