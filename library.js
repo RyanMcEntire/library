@@ -11,7 +11,7 @@ const titleError = document.getElementById('title-error');
 const authorError = document.getElementById('author-error');
 const pagesError = document.getElementById('pages-error');
 
-addButton.addEventListener('click', addBookToLibrary);
+addButton.addEventListener('click', (e) => addBookToLibrary(e));
 newBook.addEventListener('click', centerForm);
 
 bookShelf.addEventListener('click', (e) => {
@@ -60,15 +60,92 @@ function Book(title, author, pages, read) {
   };
 }
 
-function addBookToLibrary() {
-  let newBook = new Book(title.value, author.value, pages.value, read.checked);
-  myLibrary.push(newBook);
-  addCardToShelf();
-  document.getElementById('bookForm').className = 'hideForm';
-  title.value = ''; // clear fields on submit
-  author.value = '';
-  pages.value = '';
-  readBook.checked = false;
+function showTitleError() {
+  if (title.validity.valueMissing) {
+    titleError.textContent = 'You need a title to save a book.';
+  } else if (title.validity.tooLong) {
+    titleError.textContent = `The name needs to be less than ${title.maxLength} characters. You entered ${title.value.length}`;
+  }
+  titleError.className = 'error active';
+}
+
+function titleInputCheck() {
+  if (title.validity.valid) {
+    titleError.textContent = '';
+    titleError.className = 'error';
+  } else {
+    showTitleError();
+  }
+}
+
+function showAuthorError() {
+  if (author.validity.valueMissing) {
+    authorError.textContent = 'You need an author to save a book.';
+  } else if (author.validity.tooLong) {
+    authorError.textContent = `The author needs to be less than ${author.maxLength} characters. You entered ${author.value.length}`;
+  }
+  authorError.className = 'error active';
+}
+
+function authorInputCheck() {
+  if (author.validity.valid) {
+    authorError.textContent = '';
+    authorError.className = 'error';
+  } else {
+    showAuthorError();
+  }
+}
+
+function showPagesError() {
+  if (pages.validity.valueMissing) {
+    pagesError.textContent = 'You need an pages to save a book.';
+  } else if (pages.validity.tooShort) {
+    pagesError.textContent = `the book needs to be at least ${pages.minLength}. You entered ${pages.value.length}`;
+  }
+  pagesError.className = 'error active';
+}
+
+function pagesInputCheck() {
+  if (pages.validity.valid) {
+    pagesError.textContent = '';
+    pagesError.className = 'error';
+  } else {
+    showPagesError();
+  }
+}
+
+author.addEventListener('input', (e) => authorInputCheck(e));
+title.addEventListener('input', (e) => titleInputCheck(e));
+
+function addBookToLibrary(e) {
+  if (!title.validity.valid) {
+    showTitleError();
+    return;
+  }
+
+  if (!author.validity.valid) {
+    showAuthorError();
+    return;
+  }
+
+  if (!pages.validity.valid) {
+    showPagesError();
+    return;
+  } else {
+    let newBook = new Book(
+      title.value,
+      author.value,
+      pages.value,
+      read.checked
+    );
+    myLibrary.push(newBook);
+    addCardToShelf();
+    document.getElementById('bookForm').className = 'hideForm';
+    title.value = ''; // clear fields on submit
+    author.value = '';
+    pages.value = '';
+    readBook.checked = false;
+  }
 }
 
 function randomHsl() {

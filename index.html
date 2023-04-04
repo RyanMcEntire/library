@@ -20,17 +20,17 @@
       <form action="">
         <div>
           <label for="title">Title</label>
-          <input id="title" type="text" name="title" maxlength="50" />
+          <input id="title" type="text" name="title" required maxlength="50" />
           <div class="error" id="title-error"></div>
         </div>
         <div>
           <label for="author">Author</label>
-          <input id="author" type="text" name="author" maxlength="40" />
+          <input id="author" type="text" name="author" required maxlength="40" />
           <div class="error" id="author-error"></div>
         </div>
         <div>
           <label for="pages">Pages</label>
-          <input id="pages" type="number" name="pages" min="1" max="9999" />
+          <input id="pages" type="number" name="pages" required min="2" max="9999" />
           <div class="error" id="pages-error"></div>
         </div>
         <div class="buttonContainer">

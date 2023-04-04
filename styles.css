@@ -120,3 +120,13 @@ h1 {
 .error {
   height: 1rem;
 }
+
+.error.active {
+  padding: 0.3rem;
+  background-color:rgb(243, 182, 182) ;
+  border-radius: 4px;
+}
+
+input:invalid {
+  border-color: #900;
+}
